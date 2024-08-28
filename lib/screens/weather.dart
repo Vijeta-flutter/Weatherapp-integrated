@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/constant/repo.dart';
-import 'package:weatherapp/constant/weathermeta.dart';
+import 'package:weatherapp/screens/week.dart';
+
+import 'package:weatherapp/models/weathermodel.dart';
 import 'package:weatherapp/main.dart';
+import 'package:weatherapp/services/api_services.dart';
 
 class Weather extends StatefulWidget {
   @override
@@ -10,7 +12,7 @@ class Weather extends StatefulWidget {
 
 class _WeatherState extends State<Weather> {
   TextEditingController controller = TextEditingController();
-  WeatherMeta? weatherMeta;
+  WeatherModel? weatherMeta;
 
   @override
   void initState() {
@@ -19,7 +21,7 @@ class _WeatherState extends State<Weather> {
   }
 
   void getdata() async{
-    var data = await Repo().getWeather("mumbai");
+    var data = await ApiServices().getWeather("mumbai");
     setState(() {
       weatherMeta = data;
     });
@@ -61,7 +63,7 @@ class _WeatherState extends State<Weather> {
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () async{
-                WeatherMeta fetchedWeatherMeta = await Repo().getWeather(controller.text);
+                WeatherModel fetchedWeatherMeta = await ApiServices().getWeather(controller.text);
                 setState(() {
                   weatherMeta = fetchedWeatherMeta;
                 });
@@ -183,6 +185,26 @@ class _WeatherState extends State<Weather> {
                   ),
                 ],),
               ),
+              SizedBox(height: 20),
+              ElevatedButton(onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder:(context) => Week(
+                      cityname: weatherMeta?.location?.name??"ERROR")),
+                );
+              },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white12,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                  ),
+                  minimumSize: Size(MediaQuery.of(context).size.width, 40),
+                ),
+                child: Text("Next Days",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white70),
+              ),
+              )
             ],
           ),
         ),
