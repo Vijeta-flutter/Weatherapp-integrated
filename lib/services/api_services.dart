@@ -19,21 +19,22 @@ class ApiServices{
       throw Exception();
     }
   }
-  getWeeklyforcast() async{
-    var url = "http://api.weatherapi.com/v1/forecast.json?key=d771530ea2c04342a4a114808240807&q=07112&days=7";
+
+
+  Future<dynamic?> getWeeklyforcast(String cityname) async{
+    try {
+    var url = "http://api.weatherapi.com/v1/forecast.json?key=d771530ea2c04342a4a114808240807&q=$cityname&days=7";
 
     var response = await http.get(Uri.parse(url));
 
     var responseBody = response.body;
     print(responseBody);
-    try{
+
       if (response.statusCode == 200) {
-        return WeeklyModel.fromJson(json.decode(responseBody));
+        return json.decode(responseBody);
       }}
     catch(e) {
-      throw Exception();
+      print(e.toString());
     }
   }
-
-
 }
