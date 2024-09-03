@@ -27,9 +27,9 @@ class _WeekState extends State<Week> {
         if (value != null) {
           weekly = value['forecast']['forecastday'];
 
-          if (dayIndex >= 0 && dayIndex < weekly.length)
+          if (dayIndex >= 0 && dayIndex < weekly.length){
             hourly = weekly[dayIndex]['hour'];
-          print('Forecast List: ${weekly.length}');
+          print('Forecast List: ${weekly.length}');}
         }
         isReady = false;
       });
@@ -50,7 +50,7 @@ class _WeekState extends State<Week> {
   void onDaySelected(int index) {
     setState(() {
       dayIndex = index;
-      hourly = weekly[dayIndex]['hour']; // Fetch hourly data for the selected day
+      hourly = weekly[dayIndex]['hour'];
     });
   }
 
@@ -61,7 +61,7 @@ class _WeekState extends State<Week> {
         centerTitle: true,
         title: Text(
           widget.cityname,
-          style: TextStyle(color: Colors.white70,fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white70),
         ),
         backgroundColor: Colors.black38,
       ),
@@ -123,10 +123,10 @@ class _WeekState extends State<Week> {
                       } else if (dateTime.isAtSameMomentAs(tomorrow)) {
                         dayName = 'Tomorrow';
                       } else {
-                        dayName = DateFormat('EEEE').format(dateTime); // Full day name
+                        dayName = DateFormat('EEEE').format(dateTime);
                       }
 
-                      bool isSelected = dayIndex == index;
+                      // bool isSelected = dayIndex == index;
 
                       return Card(
                         color: Colors.transparent,
@@ -183,13 +183,11 @@ class _WeekState extends State<Week> {
                 ),
               ),
               SizedBox(height: 20,),
-              Container(
-                child: Text(
-                  "Hourly Forecast Summary",
-                  style: TextStyle(fontSize: 22,
-                      color: Colors.white70,
-                      fontWeight: FontWeight.bold),
-                ),
+              Text(
+                "Hourly Forecast Summary",
+                style: TextStyle(fontSize: 22,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold),
               ),
               if (dayIndex >= 0 && dayIndex < weekly.length)
               Container(

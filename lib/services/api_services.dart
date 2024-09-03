@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:weatherapp/models/weekmodel.dart';
 import 'package:weatherapp/models/weathermodel.dart';
 
 class ApiServices{
@@ -21,7 +20,7 @@ class ApiServices{
   }
 
 
-  Future<dynamic?> getWeeklyforcast(String cityname) async{
+  Future<dynamic> getWeeklyforcast(String cityname) async{
     try {
     var url = "http://api.weatherapi.com/v1/forecast.json?key=d771530ea2c04342a4a114808240807&q=$cityname&days=7";
 

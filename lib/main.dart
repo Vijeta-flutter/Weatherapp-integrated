@@ -1,5 +1,8 @@
 import 'package:weatherapp/screens/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:weatherapp/screens/weather.dart';
+import 'package:weatherapp/widget.dart';
+
 
 
 void main() {
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: RotateContainer(),
     );
   }
 }

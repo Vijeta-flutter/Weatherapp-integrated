@@ -6,14 +6,14 @@ class WeatherModel {
 
   WeatherModel.fromJson(Map<String, dynamic> json) {
     location = json['location'] != null
-        ? new Location.fromJson(json['location'])
+        ? Location.fromJson(json['location'])
         : null;
     current =
-    json['current'] != null ? new Current.fromJson(json['current']) : null;
+    json['current'] != null ? Current.fromJson(json['current']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String,dynamic>();
     if (this.location != null) {
       data['location'] = this.location!.toJson();
     }
@@ -56,7 +56,7 @@ class Location {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = this.name;
     data['region'] = this.region;
     data['country'] = this.country;
@@ -138,7 +138,7 @@ class Current {
     tempF = json['temp_f'];
     isDay = json['is_day'];
     condition = json['condition'] != null
-        ? new Condition.fromJson(json['condition'])
+        ? Condition.fromJson(json['condition'])
         : null;
     windMph = json['wind_mph'];
     windKph = json['wind_kph'];
@@ -166,7 +166,7 @@ class Current {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['last_updated_epoch'] = this.lastUpdatedEpoch;
     data['last_updated'] = this.lastUpdated;
     data['temp_c'] = this.tempC;
@@ -216,7 +216,7 @@ class Condition {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['text'] = this.text;
     data['icon'] = this.icon;
     data['code'] = this.code;

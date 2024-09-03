@@ -60,6 +60,7 @@ flutter:
     - assets/background.png
     - assets/new.png
     - assets/after_noon.png
+    - assets/crown.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
