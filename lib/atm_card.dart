@@ -5,11 +5,6 @@ class CardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 100), () {
-      WidgetsBinding.instance?.addPostFrameCallback((_) {
-      });
-    });
-
     return Scaffold(
       appBar: AppBar(
         title: Text('ATM Card'),
@@ -24,12 +19,13 @@ class CardScreen extends StatelessWidget {
               _buildCard(),
               _buildAnimatedBookmark(),
               // _buildTapDetector(),
-          ],
+            ],
           ),
         ),
       ),
     );
   }
+
   Widget _buildCard() {
     return Card(
       elevation: 10,
@@ -105,7 +101,7 @@ class CardScreen extends StatelessWidget {
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 100, end: 40),
       duration: Duration(seconds: 3),
-      builder: (context,height,child){
+      builder: (context, height, child) {
         return Positioned(
           left: 250,
           child: RotatedBox(
@@ -158,12 +154,13 @@ class CardScreen extends StatelessWidget {
                   ),
                 ],
               ),
-          ),
             ),
+          ),
         );
       },
     );
   }
+}
 
   // Widget _buildTapDetector(){
   //   return Positioned.fill(
@@ -179,7 +176,4 @@ class CardScreen extends StatelessWidget {
   //     ),
   //   );
   // }
-
-}
-
 
