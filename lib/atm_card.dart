@@ -141,7 +141,7 @@ class CardScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "hello",
+                          "hellllo",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
