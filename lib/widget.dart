@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'dart:math';
+
+import 'package:weatherapp/atm_card.dart';
 
 class RotateContainer extends StatelessWidget {
   final Duration rotationDuration;
@@ -73,6 +74,7 @@ class RotateContainer extends StatelessWidget {
           ],
         ),
       ),
+      body: CardScreen(),
     );
   }
 }

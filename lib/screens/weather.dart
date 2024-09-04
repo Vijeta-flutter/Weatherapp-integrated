@@ -212,7 +212,7 @@
 //   }
 // }
 
-import 'dart:io'; // Import for File
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weatherapp/screens/week.dart';
@@ -228,13 +228,13 @@ class Weather extends StatefulWidget {
 class _WeatherState extends State<Weather> {
   TextEditingController controller = TextEditingController();
   WeatherModel? weatherMeta;
-  String profilePicPath = ''; // Variable to store the profile picture path
+  String profilePicPath = '';
 
   @override
   void initState() {
     super.initState();
     getdata();
-    _loadProfilePic(); // Load profile picture path
+    _loadProfilePic();
   }
 
   void getdata() async {
