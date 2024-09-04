@@ -68,7 +68,7 @@ class RotateContainer extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            const Text("Flip profile"),
+            const Text("Bank"),
             Spacer(),
             _headerIcon(),
           ],
