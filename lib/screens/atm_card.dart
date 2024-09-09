@@ -7,7 +7,7 @@ class CardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ATM Card'),
+        title: Text('Virtual Card'),
         centerTitle: true,
       ),
       body: Center(
@@ -42,7 +42,7 @@ class CardScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,7 +50,7 @@ class CardScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.topCenter,
                 child: Text(
-                  'BANK NAME',
+                  'UFO NAME',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -73,7 +73,7 @@ class CardScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'CARD HOLDER',
+                    'ALICE',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -81,7 +81,7 @@ class CardScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '12/24',
+                    '12/26',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -101,7 +101,7 @@ class CardScreen extends StatelessWidget {
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 100, end: 40),
       duration: Duration(seconds: 3),
-      builder: (context, height, child) {
+      builder: (context, value, child) {
         return Positioned(
           left: 250,
           child: RotatedBox(
@@ -109,7 +109,7 @@ class CardScreen extends StatelessWidget {
             child: AnimatedContainer(
               duration: Duration(seconds: 3),
               height: 60,
-              width: height,
+              width: value,
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.only(
@@ -127,7 +127,7 @@ class CardScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.star,
                       color: Colors.white,
@@ -136,10 +136,10 @@ class CardScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: AnimatedOpacity(
-                      opacity: height == 100 ? 0.0 : 1.0,
+                      opacity: value == 100 ? 0.0 : 1.0,
                       duration: Duration(milliseconds: 300),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Text(
                           "hellllo",
                           style: TextStyle(

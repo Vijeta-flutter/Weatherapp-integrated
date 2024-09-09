@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weatherapp/screens/atm_card.dart';
 import 'edit_profile.dart';
 import 'package:weatherapp/screens/weather.dart';
 
@@ -236,10 +237,12 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white),
                 ),
               ),
+
             ],
           ),
         ],
       ),
+
     );
   }
 }

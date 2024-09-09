@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:weatherapp/screens/atm_card.dart';
 import 'package:weatherapp/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,6 +22,7 @@ class _EditProfileState extends State<EditProfile> {
   var dobText = TextEditingController();
   var emailText = TextEditingController();
   var genderlist = ['Male','Female'];
+
 
   @override
   void initState() {
@@ -272,6 +274,24 @@ class _EditProfileState extends State<EditProfile> {
                   style: TextStyle(
                       fontSize: 20,
                   color: Colors.white),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CardScreen()),);
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4)),
+                    minimumSize: Size(MediaQuery.of(context).size.width, 60)
+                ),
+                child: Text(
+                  'Check Card',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white),
                 ),
               ),
             ],

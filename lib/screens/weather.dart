@@ -213,12 +213,13 @@
 // }
 
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weatherapp/screens/week.dart';
 import 'package:weatherapp/models/weathermodel.dart';
 import 'package:weatherapp/services/api_services.dart';
-import 'package:weatherapp/widget.dart';
+import 'package:weatherapp/screens/widget.dart';
 
 class Weather extends StatefulWidget {
   @override
@@ -229,6 +230,60 @@ class _WeatherState extends State<Weather> {
   TextEditingController controller = TextEditingController();
   WeatherModel? weatherMeta;
   String profilePicPath = '';
+  final Duration rotationDuration = const Duration(seconds: 1);
+  final ValueNotifier<bool> _isRotated = ValueNotifier(false);
+
+
+
+  void _onTap() {
+    _isRotated.value = !_isRotated.value;
+  }
+
+  Widget _buildFront() {
+    return ClipOval(
+      child: Container(
+        width: 30,
+        height: 30,
+        child: Image.asset('assets/new.png'),
+      ),
+    );
+  }
+
+  Widget _buildBack() {
+    return ClipOval(
+      child: Container(
+        width: 30,
+        height: 30,
+        child: Image.asset('assets/crown.png'),
+      ),
+    );
+  }
+
+  Widget _headerIcon() {
+    return Center(
+      child: GestureDetector(
+        onTap: _onTap,
+        child: ValueListenableBuilder<bool>(
+          valueListenable: _isRotated,
+          builder: (context, isRotated, child) {
+            return TweenAnimationBuilder<double>(
+              tween: Tween<double>(begin: 0, end: isRotated ? 2 * pi : 0),
+              duration: rotationDuration,
+              builder: (context, double value, child) {
+                bool isFront = value <= pi / 2 || value >= 3 * pi / 2;
+                return Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.rotationY(value),
+                  child: isFront ? _buildFront() : _buildBack(),
+                );
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
+
 
   @override
   void initState() {
@@ -256,17 +311,24 @@ class _WeatherState extends State<Weather> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          "Weather Page",
-          style: TextStyle(color: Colors.white70),
+        title: Row(
+          children: [
+            Text(
+              "Weather Page",
+              style: TextStyle(color: Colors.white70),
+            ),
+            Spacer(),
+            _headerIcon()
+          ],
         ),
         backgroundColor: Colors.black54,
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16.0),
-            child: RotateContainer(),
+            // child: RotateContainer(),
             ),
         ],
+
       ),
       body: Container(
         decoration: BoxDecoration(

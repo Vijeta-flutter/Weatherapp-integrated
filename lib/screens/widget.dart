@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:weatherapp/atm_card.dart';
+import 'package:weatherapp/screens/atm_card.dart';
 
 class RotateContainer extends StatelessWidget {
   final Duration rotationDuration;
